@@ -16,17 +16,17 @@ var introLeavingMsg = function() {
 	if(answer) {
 		rules();
 	} else {
-		characterBuild();
+		introLeavingMsg();
 	}
 }
 
 var rulesFromIntro = function() {
-	var message = "Let's go over a few rules...\n\n1) You will have to make passed three bosses in order to receive the treasure you seek.\n\n2) You will level up along the way. The path you choose is yours. Make wise decisions\n\n3) Remember to have fun...\n\nMuahhhahahahahaaaaa!"
+	var message = "Let's go over a few rules...\n\n1) You will have to defeat three bosses in order to receive the treasure you seek.\n\n2) You will level up along the way. The path you choose is yours. Make wise decisions.\n\n3) Remember to have fun...\n\nMuahhhahahahahaaaaa!"
 	
 	var answer = confirm(message);
 
 	if(answer) {
-		//todo
+		characterBuild();
 	} else {
 		rulesFromIntro();
 	}
@@ -43,8 +43,19 @@ var rules = function() {
 	}
 }
 
+var characterBuildSimple = function() {
+	var message = "Warrior (OK) or Mage (Cancel)?"
+	
+	var answer = confirm(message);
+	if(answer) {
+		characterDecision('warrior');
+	} else {
+		characterDecision('mage')
+	}
+}
+
 var characterBuild = function() {
-	var message = "You don't learn very quickly do you?\n\nOh well, let's begin. What class would you like to be this time?\n\n*Note: SAO Xgen is still in beta. There are only 2 classes.\n\nPlease type your selection:\n\nwarrior or mage?"
+	var message = "What class would you like to be this time, Kirito?\n\n*Note: SAO Xgen is still in beta. There are only 2 classes.\n\nPlease type your selection:\n\nWarrior (OK) or Mage (Cancel)?"
 	
 	var answer = confirm(message);
 	if(answer) {
@@ -58,8 +69,15 @@ var characterDecision = function(message) {
 	var answer = confirm('You chose ' + message + '. Is this correct?');
 
 	if(answer) {
-		alert('good');
+		var playerClass = document.getElementById("playerClass");
+		var playerName = document.getElementById("playerName");
+		playerName.value = 'Kirito';
+		playerClass.value = message.capitalizeFirstLetter();
 	} else {
-		characterBuild();
+		characterBuildSimple();
 	}
+}
+
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
 }

@@ -1,0 +1,9 @@
+#mainDiv {
+	width: 960px;
+	height: 600px;
+	background-color: #0000ff;
+}
+
+.makeCentered {
+	margin: 0 auto;
+}

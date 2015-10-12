@@ -79,3 +79,7 @@ th, td {
 table, th, td {
 	border: 1px solid #FFFFFF;
 }
+
+input#theID {
+	visibility: hidden;
+}

@@ -57,7 +57,7 @@ var characterBuildSimple = function() {
 }
 
 var characterBuild = function() {
-	var message = "What class would you like to be this time, Kirito?\n\n*Note: SAO Xgen is still in beta. There are only 2 classes.\n\nPlease type your selection:\n\nWarrior (OK) or Mage (Cancel)?"
+	var message = "What class would you like to be this time, Kirito?\n\n*Note: SAO Xgen is still in beta. There are only 2 classes.\n\nPlease make a selection:\n\nWarrior (OK) or Mage (Cancel)?"
 	
 	var answer = confirm(message);
 	if(answer) {

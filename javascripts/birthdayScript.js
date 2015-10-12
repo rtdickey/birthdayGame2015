@@ -87,7 +87,7 @@ String.prototype.capitalizeFirstLetter = function() {
 
 var useButton = function(element) {
 	var x = parseInt(element.innerHTML);
-
+	
 	if(x > 0) {
 		x--;
 		element.innerHTML = x;
@@ -97,8 +97,10 @@ var useButton = function(element) {
 }
 
 var initiateStats = function(classType) {
+	var stat0 = document.getElementById('stat0');
 	var stat1 = document.getElementById('stat1');
 	var stat2 = document.getElementById('stat2');
+	var stat0number = document.getElementById('stat0number');
 	var stat1number = document.getElementById('stat1number');
 	var stat2number = document.getElementById('stat2number');
 
@@ -108,27 +110,37 @@ var initiateStats = function(classType) {
 	var attack = document.getElementById('attack');
 
 	if(classType === 'warrior') {
-		stat1.innerHTML = 'Strength';
-		stat2.innerHTML = 'Armor (Heavy)';
+		stat0.innerHTML = 'HP'
+		stat1.innerHTML = 'Strength (+1)';
+		stat2.innerHTML = 'Armor (+2)';
+		stat3.innerHTML = 'Health';
+		stat0number.innerHTML = 20;
 		stat1number.innerHTML = 1;
 		stat2number.innerHTML = 3;
+		stat3number.innerHTML = 0;
 		potion1.innerHTML = 'HP Recovery';
-		potion2.innerHTML = 'Strength Burst'
+		potion2.innerHTML = 'Strength Burst';
 		recovery.innerHTML = 0;
 		attack.innerHTML = 0;
 	} else {
-		stat1.innerHTML = 'Spell DMG';
-		stat2.innerHTML = 'Armor (Light)';
+		stat0.innerHTML = 'HP'
+		stat1.innerHTML = 'Spell DMG (+2)';
+		stat2.innerHTML = 'Armor (+1)';
+		stat3.innerHTML = 'Health';
+		stat0number.innerHTML = 20;
 		stat1number.innerHTML = 3;
 		stat2number.innerHTML = 1;
+		stat3number.innerHTML = 0;
 		potion1.innerHTML = 'HP Recovery';
-		potion2.innerHTML = 'Spell DMG Burst'
+		potion2.innerHTML = 'Spell DMG Burst';
 		recovery.innerHTML = 0;
 		attack.innerHTML = 0;
 	}
 }
 
-
+var hidePassword = function(element) {
+	element.style.visibility = "hidden";
+}
 
 var askToAdd = function(element) {
 	var hiddenField = document.getElementById('theID');
@@ -136,18 +148,175 @@ var askToAdd = function(element) {
 	document.getElementById("passwordArea").style.visibility = "visible";
 }
 
-var addTo = function(hiddenField, pw) {
+var addTo = function(hiddenField, ta, pw, operation) {
 	document.getElementById("passwordArea").style.visibility = "hidden";
 	var password = pw.value;
+	var element = document.getElementById(hiddenField.value);
 
-	if(password === 'kevinlovesasuna') {
-		var element = document.getElementById(hiddenField.value);
+	if(password === 'k<3a') {	
 		var x = parseInt(element.innerHTML);
-		x++;
-		element.innerHTML = x;
+		var y = parseInt(ta.value);
+
+		if(operation.id === 'add') {
+			///////////////////////////////////
+			if(element.id.indexOf('stat1') > -1 || element.id.indexOf('stat2') > -1) {
+				if(document.getElementById('playerClass').value === 'Warrior') {
+					if(x + y <= 10) {
+						element.innerHTML = x + y;
+					} else {
+						alert('Invalid computation...');
+					}
+				} else if(document.getElementById('playerClass').value === 'Mage') {
+					if(element.id.indexOf('stat1') > -1) {
+						if(x + y <= 10) {
+							element.innerHTML = x + y;
+						} else {
+							alert('Invalid computation...');
+						}
+					} else if (element.id.indexOf('stat2') > -1) {
+						if(x + y <= 5) {
+							element.innerHTML = x + y;
+						} else {
+							alert('Invalid computation...');
+						}
+					}
+				}
+			} else {
+				if (element.id.indexOf('stat3') > -1) {
+					if(x + y <= 10) {
+						element.innerHTML = x + y;
+					} else {
+						alert('Invalid computation');
+					}
+				} else {
+					element.innerHTML = x + y;
+				}
+			}
+		} else {
+			if(element.id === 'stat0number'){
+				element.innerHTML = x - y;
+			} else {
+				alert('Only can subtract from HP...');
+			}
+		}
+		
 		pw.value = "";
+		ta.value = "";
 	} else {
 		alert('Incorrect password. Please try again...');
 		askToAdd(document.getElementById(hiddenField.value));
 	}
+
+	checkAndUpdateStats(element);
 }
+
+var checkAndUpdateStats = function(e) {
+		var str = e.id;
+
+		if(str.indexOf('stat1') > -1) {
+			var stat1 = document.getElementById('stat1');
+			
+			if(stat1.innerHTML.indexOf('Strength') > -1) {
+				if(e.innerHTML === '3') {
+					stat1.innerHTML = 'Strength (+2)'
+				} else if(e.innerHTML === '5') {
+					stat1.innerHTML = 'Strength (+3)'
+				} else if(e.innerHTML === '7') {
+					stat1.innerHTML = 'Strength (+4)'
+				} else if(e.innerHTML === '9') {
+					stat1.innerHTML = 'Strength (+5)'
+				} else if(e.innerHTML === '10') {
+					stat1.innerHTML = 'Strength (+7)'
+				}	
+			}
+
+			if(stat1.innerHTML.indexOf('Spell DMG') > -1) {
+				if(e.innerHTML === '3') {
+					stat1.innerHTML = 'Spell DMG (+2)'
+				} else if(e.innerHTML === '5') {
+					stat1.innerHTML = 'Spell DMG (+4)'
+				} else if(e.innerHTML === '7') {
+					stat1.innerHTML = 'Spell DMG (+6)'
+				} else if(e.innerHTML === '9') {
+					stat1.innerHTML = 'Spell DMG (+8)'
+				} else if(e.innerHTML === '10') {
+					stat1.innerHTML = 'Spell DMG (+12)'
+				}	
+			}
+		} else if(str.indexOf('stat2') > -1) {
+			var stat2 = document.getElementById('stat2');
+
+			if(stat2.innerHTML.indexOf('Armor') > -1) {
+				if(e.innerHTML === '3') {
+					stat2.innerHTML = 'Armor (+2)'
+				} else if(e.innerHTML === '5') {
+					stat2.innerHTML = 'Armor (+3)'
+				}
+
+				if(document.getElementById('playerClass').value === 'Warrior') {
+					if(e.innerHTML === '7') {
+						stat2.innerHTML = 'Armor (+4)'
+					} else if(e.innerHTML === '9') {
+						stat2.innerHTML = 'Armor (+5)'
+					} else if(e.innerHTML === '10') {
+						stat2.innerHTML = 'Armor (+7)'
+					}
+				}	
+			}
+		} else if(str.indexOf('stat3') > -1) {
+			var stat3 = document.getElementById('stat3');
+			var healthElement = document.getElementById('stat0number');
+
+			if(stat3.innerHTML.indexOf('Health') > -1) {	
+				if(document.getElementById('playerClass').value === 'Warrior') {
+					if(e.innerHTML === '1') {
+						stat3.innerHTML = 'Health (+8)'
+					} else if(e.innerHTML === '2') {
+						stat3.innerHTML = 'Health (+16)'
+					} else if(e.innerHTML === '3') {
+						stat3.innerHTML = 'Health (+24)'
+					} else if(e.innerHTML === '4') {
+						stat3.innerHTML = 'Health (+32)'
+					} else if(e.innerHTML === '5') {
+						stat3.innerHTML = 'Health (+40)'
+					} else if(e.innerHTML === '6') {
+						stat3.innerHTML = 'Health (+48)'
+					} else if(e.innerHTML === '7') {
+						stat3.innerHTML = 'Health (+56)'
+					} else if(e.innerHTML === '8') {
+						stat3.innerHTML = 'Health (+64)'
+					} else if(e.innerHTML === '9') {
+						stat3.innerHTML = 'Health (+72)'
+					} else if(e.innerHTML === '10') {
+						stat3.innerHTML = 'Health (+80)'
+					}
+					var a = parseInt(healthElement.innerHTML) + 8;
+					healthElement.innerHTML = a;				
+				} else if(document.getElementById('playerClass').value === 'Mage') {
+					if(e.innerHTML === '1') {
+						stat3.innerHTML = 'Health (+5)'
+					} else if(e.innerHTML === '2') {
+						stat3.innerHTML = 'Health (+10)'
+					} else if(e.innerHTML === '3') {
+						stat3.innerHTML = 'Health (+15)'
+					} else if(e.innerHTML === '4') {
+						stat3.innerHTML = 'Health (+20)'
+					} else if(e.innerHTML === '5') {
+						stat3.innerHTML = 'Health (+25)'
+					} else if(e.innerHTML === '6') {
+						stat3.innerHTML = 'Health (+30)'
+					} else if(e.innerHTML === '7') {
+						stat3.innerHTML = 'Health (+35)'
+					} else if(e.innerHTML === '8') {
+						stat3.innerHTML = 'Health (+30)'
+					} else if(e.innerHTML === '9') {
+						stat3.innerHTML = 'Health (+45)'
+					} else if(e.innerHTML === '10') {
+						stat3.innerHTML = 'Health (+50)'
+					}
+					var a = parseInt(healthElement.innerHTML) + 5;
+					healthElement.innerHTML = a;
+				}
+			}
+		}
+	}

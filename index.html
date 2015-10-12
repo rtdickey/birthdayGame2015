@@ -30,12 +30,16 @@
 				<aside class="formStructureInput">
 					<table>
 						<tr>
+							<th id="stat0">TBD</th>
 							<th id="stat1">TBD</th>
 							<th id="stat2">TBD</th>
+							<th id="stat3">TBD</th>
 						</tr>
 						<tr>
+							<td id="stat0number" onclick="askToAdd(document.getElementById('stat0number'))">TBD</td>
 							<td id="stat1number" onclick="askToAdd(document.getElementById('stat1number'))">TBD</td>
 							<td id="stat2number" onclick="askToAdd(document.getElementById('stat2number'))">TBD</td>
+							<td id="stat3number" onclick="askToAdd(document.getElementById('stat3number'))">TBD</td>
 						</tr>
 					</table>
 				</aside>
@@ -73,12 +77,18 @@
 		<section id="passwordArea">
 			<form>
 				<aside class="formStructureLabel alignRight">
+   					Number:
+   					<br>
    					Password:
    				</aside>
    				<aside class="formStructureInput">
+   					<input id="textArea" type="text" autofocus/>
+   					<br>
    					<input id="pwArea" type="password" />
    					<br>
-   					<button type="button" onclick="addTo(document.getElementById('theID'), document.getElementById('pwArea'))">Submit</button>
+   					<button id="add" type="button" onclick="addTo(document.getElementById('theID'), document.getElementById('textArea'), document.getElementById('pwArea'), document.getElementById('add'))">Add</button>
+   					<button id="subtract" type="button" onclick="addTo(document.getElementById('theID'), document.getElementById('textArea'), document.getElementById('pwArea'), document.getElementById('subtract'))">Subtract</button>
+   					<button type="button" onclick="hidePassword(document.getElementById('passwordArea'))">Cancel</button>
    				</aside>
    				<input id="theID" type="text" value=""/>
 			</form>

@@ -36,8 +36,16 @@ section#playerStats {
 section#playerItems {
 	float: left;
 	clear: both;
+	margin-bottom: 10px;
 }
 /*END Player Items*/
+
+/*BEGIN Hidden Area*/
+section#passwordArea {
+	float: left;
+	clear: both;
+}
+/*END Hidden Area*/
 
 .makeCentered {
 	margin: 0 auto;

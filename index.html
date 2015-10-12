@@ -30,12 +30,12 @@
 				<aside class="formStructureInput">
 					<table>
 						<tr>
-							<th id="stat1" onclick="addTo(document.getElementById('stat1'))">TBD</th>
+							<th id="stat1">TBD</th>
 							<th id="stat2">TBD</th>
 						</tr>
 						<tr>
-							<td id="stat1number">0</td>
-							<td id="stat2number">0</td>
+							<td id="stat1number" onclick="askToAdd(document.getElementById('stat1number'))">0</td>
+							<td id="stat2number" onclick="askToAdd(document.getElementById('stat2number'))">0</td>
 						</tr>
 					</table>
 				</aside>
@@ -54,8 +54,8 @@
 							<th id="potion2">TBD</th>
 						</tr>
 						<tr>
-							<td id="recovery">0</td>
-							<td id="attack">0</td>
+							<td id="recovery" onclick="askToAdd(document.getElementById('recovery'))">0</td>
+							<td id="attack" onclick="askToAdd(document.getElementById('attack'))">0</td>
 						</tr>
 						<tr>
 							<td>
@@ -68,6 +68,20 @@
 					</table>
 				</aside>
 			</article>
+		</section>
+
+		<section id="passwordArea">
+			<form>
+				<aside class="formStructureLabel alignRight">
+   					Password:
+   				</aside>
+   				<aside class="formStructureInput">
+   					<input id="pwArea" type="password" />
+   					<br>
+   					<button type="button" onclick="addTo(document.getElementById('theID'), document.getElementById('pwArea'))">Submit</button>
+   				</aside>
+   				<input id="theID" type="text" style="visibility: hidden" value=""/>
+			</form>
 		</section>
 	</section>
 </body>

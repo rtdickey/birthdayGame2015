@@ -1,4 +1,6 @@
 var introMsg = function() {
+	document.getElementById("passwordArea").style.visibility = "hidden";
+
 	var message = 'Welcome to SAO Xgen.\n\nToday is special. You have purchased your new NERVE Gear from your local store. Very trusting of you to come back. What do you have to prove, Kirito?\n\n Anyway, shall we begin?'
 
 	var answer = confirm(message);
@@ -124,6 +126,26 @@ var initiateStats = function(classType) {
 	}
 }
 
-var addTo = function() {
 
+
+var askToAdd = function(element) {
+	var hiddenField = document.getElementById('theID');
+	hiddenField.value = element.id;
+	document.getElementById("passwordArea").style.visibility = "visible";
+}
+
+var addTo = function(hiddenField, pw) {
+	document.getElementById("passwordArea").style.visibility = "hidden";
+	var password = pw.value;
+
+	if(password === 'kevinlovesasuna') {
+		var element = document.getElementById(hiddenField.value);
+		var x = parseInt(element.innerHTML);
+		x++;
+		element.innerHTML = x;
+		pw.value = "";
+	} else {
+		alert('Incorrect password. Please try again...');
+		askToAdd(document.getElementById(hiddenField.value));
+	}
 }

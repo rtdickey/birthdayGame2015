@@ -114,7 +114,8 @@ var initiateStats = function(classType) {
 		stat2number.innerHTML = 3;
 		potion1.innerHTML = 'HP Recovery';
 		potion2.innerHTML = 'Strength Burst'
-		recovery.innerHTML = 1;
+		recovery.innerHTML = 0;
+		attack.innerHTML = 0;
 	} else {
 		stat1.innerHTML = 'Spell DMG';
 		stat2.innerHTML = 'Armor (Light)';
@@ -122,7 +123,8 @@ var initiateStats = function(classType) {
 		stat2number.innerHTML = 1;
 		potion1.innerHTML = 'HP Recovery';
 		potion2.innerHTML = 'Spell DMG Burst'
-		recovery.innerHTML = 1;
+		recovery.innerHTML = 0;
+		attack.innerHTML = 0;
 	}
 }
 

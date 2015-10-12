@@ -1,5 +1,6 @@
 body {
 	background-color: #2da0e3;
+	color: #FFFFFF;
 }
 
 section#mainDiv {
@@ -18,17 +19,24 @@ section#aboutPlayerSection {
 }
 
 article#aboutPlayerArticle {
-	color: #FFFFFF;
 	float: left;
+	margin-bottom: 10px;
 }
 /*END Player Information*/
 
 /*BEGIN Player Stats*/
-
+section#playerStats {
+	float: left;
+	clear: both;
+	margin-bottom: 10px;
+}
 /*END Player Stats*/
 
 /*BEGIN Player Items*/
-
+section#playerItems {
+	float: left;
+	clear: both;
+}
 /*END Player Items*/
 
 .makeCentered {
@@ -49,4 +57,17 @@ article#aboutPlayerArticle {
 
 .alignRight {
 	text-align: right;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid #FFFFFF;
 }

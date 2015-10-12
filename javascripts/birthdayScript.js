@@ -73,6 +73,7 @@ var characterDecision = function(message) {
 		var playerName = document.getElementById("playerName");
 		playerName.value = 'Kirito';
 		playerClass.value = message.capitalizeFirstLetter();
+		initiateStats(message);
 	} else {
 		characterBuildSimple();
 	}
@@ -80,4 +81,49 @@ var characterDecision = function(message) {
 
 String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+var useButton = function(element) {
+	var x = parseInt(element.innerHTML);
+
+	if(x > 0) {
+		x--;
+		element.innerHTML = x;
+	} else {
+		alert('You have no more ' + element.id + ' potions...')
+	}
+}
+
+var initiateStats = function(classType) {
+	var stat1 = document.getElementById('stat1');
+	var stat2 = document.getElementById('stat2');
+	var stat1number = document.getElementById('stat1number');
+	var stat2number = document.getElementById('stat2number');
+
+	var potion1 = document.getElementById('potion1');
+	var potion2 = document.getElementById('potion2');
+	var recovery = document.getElementById('recovery');
+	var attack = document.getElementById('attack');
+
+	if(classType === 'warrior') {
+		stat1.innerHTML = 'Strength';
+		stat2.innerHTML = 'Armor (Heavy)';
+		stat1number.innerHTML = 1;
+		stat2number.innerHTML = 3;
+		potion1.innerHTML = 'HP Recovery';
+		potion2.innerHTML = 'Strength Burst'
+		recovery.innerHTML = 1;
+	} else {
+		stat1.innerHTML = 'Spell DMG';
+		stat2.innerHTML = 'Armor (Light)';
+		stat1number.innerHTML = 3;
+		stat2number.innerHTML = 1;
+		potion1.innerHTML = 'HP Recovery';
+		potion2.innerHTML = 'Spell DMG Burst'
+		recovery.innerHTML = 1;
+	}
+}
+
+var addTo = function() {
+
 }

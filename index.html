@@ -23,11 +23,51 @@
 		</section>
 
 		<section id="playerStats">
-			<article>Stats</article>
+			<article>
+				<aside class="formStructureLabel alignRight">
+					<span>Player Stats:</span>
+				</aside>
+				<aside class="formStructureInput">
+					<table>
+						<tr>
+							<th id="stat1" onclick="addTo(document.getElementById('stat1'))">TBD</th>
+							<th id="stat2">TBD</th>
+						</tr>
+						<tr>
+							<td id="stat1number">0</td>
+							<td id="stat2number">0</td>
+						</tr>
+					</table>
+				</aside>
+			</article>
 		</section>
 
 		<section id="playerItems">
-			<article>Potions</article>
+			<article>
+				<aside class="formStructureLabel alignRight">
+					<span>Potions:</span>
+				</aside>
+				<aside class="formStructureInput">
+					<table>
+						<tr>
+							<th id="potion1">TBD</th>
+							<th id="potion2">TBD</th>
+						</tr>
+						<tr>
+							<td id="recovery">0</td>
+							<td id="attack">0</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" onclick="useButton(document.getElementById('recovery'))">Use!</button>
+								</td>
+							<td>
+								<button type="button" onclick="useButton(document.getElementById('attack'))">Use!</button>
+							</td>
+						</tr>
+					</table>
+				</aside>
+			</article>
 		</section>
 	</section>
 </body>

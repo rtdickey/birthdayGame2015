@@ -5,28 +5,30 @@
 </head>
 <body onload="introMsg()">
 	<section id="mainDiv" class="makeCentered">
-		<form>
-			<aside class="formStructureLabel alignRight">
-			  	<label>Player Name:</label>
-			  	<br>
-			  	<label>Player Class:</label>
-		  	</aside>
-		  	<aside class="formStructureInput">
-			  	<input id="playerName" type="text" name="name" readonly>
-			  	<br>
-			  	<input id="playerClass" type="text" name="class" readonly>
-			</aside>
-		</form>
-			
-		</article>
-	</section>
+		<section id="aboutPlayerSection">
+			<article id="aboutPlayerArticle">
+				<form id="playerInfo">
+					<aside class="formStructureLabel alignRight">
+					  	<label>Player Name:</label>
+					  	<br>
+					  	<label>Player Class:</label>
+				  	</aside>
+				  	<aside class="formStructureInput">
+					  	<input id="playerName" type="text" name="name" readonly>
+					  	<br>
+					  	<input id="playerClass" type="text" name="class" readonly>
+					</aside>
+				</form>
+			</article>
+		</section>
 
-	<section>
-		<article></article>
-	</section>
+		<section id="playerStats">
+			<article>Stats</article>
+		</section>
 
-	<section>
-		<article></article>
+		<section id="playerItems">
+			<article>Potions</article>
+		</section>
 	</section>
 </body>
 </html>
